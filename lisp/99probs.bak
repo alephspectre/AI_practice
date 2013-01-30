@@ -1,0 +1,10 @@
+#lang racket
+(define (my-last x)
+  (if (null? (cdr x))
+      (car x)
+      (my-last (cdr x))))
+
+(define (my-but-last x)
+  (if (null? (cddr x))
+      (car x)
+      (my-but-last (cdr x))))
