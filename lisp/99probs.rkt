@@ -22,3 +22,20 @@
 (define (list-length x)
   (list-length-help x 1))
 
+(define (my-map func x)
+  (my-map-helper func inlist outlist))
+
+(define (my-map-helper func inlist outlist)
+  (if (null? (cdr inlist))
+      outlist
+      (append outlist (list (func inlist)))))
+
+(define (my-filter func x)
+  (my-filter-helper func x null))
+
+(define (my-filter-helper func mainlist finlist)
+  (if (null? (cdr mainlist))
+      finlist
+      (if (func (car mainlist))
+         (my-filter-helper func (cdr mainlist) (append finlist (list (car mainlist))))
+         (my-filter-helper func (cdr mainlist) finlist))))
